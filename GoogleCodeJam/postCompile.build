@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<project name="Hello World" default="build" basedir=".">
+
+	<target name="Debug" description="compiles the source code">
+		<echo message="Debug!"/>
+	</target>
+	
+	<target name="Release" description="compiles the source code">
+		<delete>
+			<fileset basedir="..\Files\SourceFiles">
+				<include name="**\*" />
+			</fileset>
+		</delete>
+	
+		<copy todir="..\Files\SourceFiles" overwrite="true">
+			<fileset basedir="..\GoogleCodeJam">
+				<include name="**/*" />
+			</fileset>
+		</copy>
+		
+		<delete dir="..\Files\SourceFiles\obj" />
+		<delete dir="..\Files\SourceFiles\bin" />
+		<delete file="..\Files\SourceFiles\GoogleCodeJam.csproj.user" />
+		
+		<zip zipfile="..\Files\SourceFiles.zip">
+			<fileset basedir="..\Files\SourceFiles">
+				<include name="**/*" />
+			</fileset>
+		</zip>
+				
+		<echo message="${ProjectName}"/>
+				
+		<copy todir="..\Files" overwrite="true">
+			<fileset basedir="bin\Release\">
+				<include name="**/${ProjectName}.exe" />
+				<include name="**/${ProjectName}.exe.config" />
+			</fileset>
+		</copy>
+		
+	</target>
+	
+</project>

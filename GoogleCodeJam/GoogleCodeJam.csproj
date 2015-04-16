@@ -41,7 +41,7 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>none</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\Files\</OutputPath>
+    <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>
     </DefineConstants>
     <ErrorReport>none</ErrorReport>
@@ -96,6 +96,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>nant /f:..\..\postCompile.build $(ConfigurationName) -D:ProjectName=$(ProjectName)</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
