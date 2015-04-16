@@ -14,8 +14,7 @@ namespace TestGoogleCodeJam
         [TestMethod]
         public void TestMethodReadFile()
         {
-            string startupPath = Path.Combine(Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).Parent.Parent.FullName, "Input\\A-small-practice.in");
-            var fileReader = new GoogleCodeJam.FileIO.FileManager(startupPath);
+            var fileReader = new GoogleCodeJam.FileIO.FileManager();
             var output = fileReader.ReadFile();
             Assert.AreEqual(31, output.Count);
             Assert.AreEqual("10", output[0][0]);
